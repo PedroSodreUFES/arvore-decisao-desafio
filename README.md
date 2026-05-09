@@ -1,31 +1,31 @@
 ![Python](https://img.shields.io/badge/Python-FF6F00?style=for-the-badge&logo=python&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-FF6F00?style=for-the-badge&logo=scikitlearn&logoColor=white)
-![Gradio](https://img.shields.io/badge/Gradio-FF6F00?style=for-the-badge&logo=python&logoColor=white)
+![Gradio](https://img.shields.io/badge/Gradio-FF6F00?style=for-the-badge&logo=gradio&logoColor=white)
 ![Joblib](https://img.shields.io/badge/Joblib-FF6F00?style=for-the-badge&logo=python&logoColor=white)
 ![Pingouin](https://img.shields.io/badge/Pingouin-FF6F00?style=for-the-badge&logo=python&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-FF6F00?style=for-the-badge&logo=python&logoColor=white)
-![Optuna](https://img.shields.io/badge/Optuna-FF6F00?style=for-the-badge&logo=python&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-FF6F00?style=for-the-badge&logo=plotly&logoColor=white)
+![Optuna](https://img.shields.io/badge/Optuna-FF6F00?style=for-the-badge&logo=optuna&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-FF6F00?style=for-the-badge&logo=pandas&logoColor=white)
-![Plotly](https://img.shields.io/badge/Plotly-FF6F00?style=for-the-badge&logo=python&logoColor=white)
-![Pingouin](https://img.shields.io/badge/Pingouin-FF6F00?style=for-the-badge&logo=python&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-FF6F00?style=for-the-badge&logo=plotly&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-FF6F00?style=for-the-badge&logo=python&logoColor=white)
 
-# Modelo: Árvore de Decisão
-Um modelo em **Árvore de Decisão** para prever qual a classe de uma empresa em serviços de consultoria, a partir de seus dados:
-+ Tipo de atividade economica
-+ Faturamento Mensal
-+ Número de funcionários
-+ Cidade
-+ Idade
-+ Grau de inovação
+# Modelo: Árvore de Decisão - Identificador de Fraudes
+Um modelo em **Árvore de Decisão** para prever se uma transação é fraude ou não, baseado nos seguintes dados do cliente:
++ Classe (0 = não é fraude, 1 = é fraude)
++ Tipo de transação (Saque, PIX, Crédito, Débito)
++ Valor da transação
++ Valor antes da transação
++ Valor após a transação
++ Horário da transação
++ ID do cliente
 
-O objetivo é definr se a empresa assina o plano Starter, Bronze, Silver ou Ouro.
 
 ## Sobre o projeto
-1. Trata de uma análise exploratória de dados para verificar a relação dos dados com a variável target. Feita com pandas, plotly e matplotlib.
-2. Embora seja analisada a relação das variáveis, usa-se todas as variáveis para título de introdução aos algoritmos de classificação.
+1. Trata de uma análise exploratória de dados para verificar a relação dos dados com a variável target. Feita com pandas, plotly, matplotlib e seaborn.
+2. Usa-se somente as variáveis que indicam uma relação com a variável target.
 3. O treinamento do modelo é feito com Stratified K-Folds e tunning de hiperparâmetros com Optuna.
 4. Após o treinamento do modelo, há uma análise da qualidade do modelo, usando métrica de **Acurácia** principalmente para efeito introdutório, e **Matriz de Confusão**.
-5. AO fim é impressa a árvore de decisão.
+5. Ao fim é impressa a árvore de decisão.
 
 ## Tecnologias usadas
 1. Python
@@ -36,7 +36,8 @@ O objetivo é definr se a empresa assina o plano Starter, Bronze, Silver ou Ouro
 6. Optuna
 7. Pandas
 8. Pingouin
-9. Joblib
+9. Seaborn
+10. Joblib
 ### Como preparar o ambiente
 ```bash
 pipenv sync
@@ -44,7 +45,7 @@ pipenv shell
 ```
 ### Como rodar o código que gera o modelo
 ```bash
-python model_classificacao.py
+python classification_model.py
 ```
 ### Como rodar o Gradio App
 ```bash
