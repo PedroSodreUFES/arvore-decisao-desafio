@@ -2,7 +2,6 @@
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-FF6F00?style=for-the-badge&logo=scikitlearn&logoColor=white)
 ![Gradio](https://img.shields.io/badge/Gradio-FF6F00?style=for-the-badge&logo=gradio&logoColor=white)
 ![Joblib](https://img.shields.io/badge/Joblib-FF6F00?style=for-the-badge&logo=python&logoColor=white)
-![Pingouin](https://img.shields.io/badge/Pingouin-FF6F00?style=for-the-badge&logo=python&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-FF6F00?style=for-the-badge&logo=plotly&logoColor=white)
 ![Optuna](https://img.shields.io/badge/Optuna-FF6F00?style=for-the-badge&logo=optuna&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-FF6F00?style=for-the-badge&logo=pandas&logoColor=white)
@@ -19,7 +18,6 @@ Um modelo em **Árvore de Decisão** para prever se uma transação é fraude ou
 + Horário da transação
 + ID do cliente
 
-
 ## Sobre o projeto
 1. Trata de uma análise exploratória de dados para verificar a relação dos dados com a variável target. Feita com pandas, plotly, matplotlib e seaborn.
 2. Usa-se somente as variáveis que indicam uma relação com a variável target.
@@ -35,9 +33,8 @@ Um modelo em **Árvore de Decisão** para prever se uma transação é fraude ou
 5. Matplotlib
 6. Optuna
 7. Pandas
-8. Pingouin
-9. Seaborn
-10. Joblib
+8. Seaborn
+9. Joblib
 ### Como preparar o ambiente
 ```bash
 pipenv sync
@@ -70,13 +67,13 @@ Na sequência faz-se uma série de testes qui-quadrados entre target e as variá
 
 
 ### Treinamento do modelo
-Por escolha educativa, escolheu-se todas as variáveis independentes para representar o modelo. Há o uso de Stratified K-Folds para separar os dados proporcionalmente para o treinamento do modelo. A acurácia obtida pelo modelo foi de ≃ .474, ou seja acertou menos da metade dos dados, o que é ruim.
+Por escolha educativa, escolheu-se todas as variáveis independentes para representar o modelo. Há o uso de Stratified K-Folds para separar os dados proporcionalmente para o treinamento do modelo. A acurácia obtida pelo modelo foi de ≃ .8099, ou seja acertou 80% dos dados, o que é ok de forma geral.
 
 Na sequência obtêm-se as métricas do modelo treinado com uma matriz de confusão:
 
 ![Matriz de Confusão](./dataviz/matriz-confusao.png)
 
-Na diagonal pode-se ver quantos acertos houve. Nesse caso, não acertou nenhum Starter e nenhum Ouro. Além disso, masi errou os Bronzes que acertou, enquanto acertou mais os Pratas. Possivelmente por Prata ser a coluna mais presente, acertou mais os Pratas.
+Na diagonal pode-se ver quantos acertos houve. Nesse caso percebe que o acerto de não fraudes é grande, mas o acerto de fraudes é baixíssimo.
 
 Com uso do Optuna, foi possível escolher os melhores hiper parâmetros para treinar o modelo, sendo estes parâmetros:
 - Profundidade máxima da árvore
@@ -86,15 +83,18 @@ Com os hiperparâmetros, treinou-se o modelo novamente e obteve-se a visualizaç
 
 ![Árvore de Decisão](./dataviz/decision-tree.png)
 
-Pela árvore, vê-se que não há a opção Bronze nas folhas, o que mostra a dificuldade de encontrar os clientes Bronze.
+
+### Métricas
+|Fraude|F1-Score|Accuracy|Precision|Recall|
+|:---|:----:|:-----|:---:|:----:|
+|Sim|0.89|0.89|-|0.89|
+|Não|0.13|0.13|-|0.13|
 
 ### Conclusão
 
-- Pela árvore, vê-se que há uma grande dificuldade de acertar entre prata e bronze.
-- Também estabeleceu uma dificuldade em definir ouros e starter, visto que o modelo não acertou nenhuma vez.
-- Pela acurácia, o modelo não acerta nem metade dos dados, o que mostra que o modelo é ruim.
-- Como não foi selecionado as características mais importantes, isso impactou no modelo, que leva em conta várias variáveis independentes que parecem não afetar, como tipo de serviço e localização.
-- O modelo nao define bem os dados. O modelo é ruim.
+- Pela matriz de confusão, é possível enxergar que quando há uma fraude, há muitos casos de falso negativo.
+- A árvore em contexto geral é satisfatória quando não é fraude, mas ruim quando é fraude.
+- Pelos dados, é possível notar que os dados de fraude e não fraude são muito parecidos, logo é explicável o modelo ruim.
 
 ### Créditos
 Pedro Malini, 9 de Maio de 2026 
